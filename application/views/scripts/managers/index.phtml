@@ -1,0 +1,41 @@
+<a href="<?php echo $this->url(array(
+    'controller' => 'managers',
+    'action' => 'add'
+)) ?>">Add manager</a>
+
+<?php if (count($this->managers)): ?>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name Surname</th>
+            <th>Add task</th>
+            <th>Delete manager</th>
+        </tr>
+        <?php foreach ($this->managers as $manager): ?>
+            <tr>
+                <td><?php echo $manager->id; ?></td>
+                <td><a href="<?php echo $this->url(array(
+                        'controller' => 'managers',
+                        'action' => 'view',
+                        'id' => $manager->id
+                    )) ?>"><?php echo $manager->name . " " . $manager->surname; ?></a></td>
+                <td>
+                    <a href="<?php echo $this->url(array(
+                        'controller' => 'managers',
+                        'action' => 'edit',
+                        'id' => $manager->id
+                    )) ?>">Add task</a>
+                </td>
+                <td>
+                    <a href="<?php echo $this->url(array(
+                        'controller' => 'managers',
+                        'action' => 'delete',
+                        'id' => $manager->id
+                    )) ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>No managers</p>
+<?php endif; ?>

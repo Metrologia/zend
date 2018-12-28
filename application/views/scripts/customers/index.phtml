@@ -1,0 +1,50 @@
+<a href="<?php echo $this->url(array(
+    'controller' => 'customers',
+    'action' => 'add'
+)) ?>">Add customer</a>
+
+<?php if (count($this->customers)): ?>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name Surname</th>
+            <th>Task</th>
+            <th>Manager</th>
+            <th>Add task</th>
+            <th>Delete customer</th>
+        </tr>
+        <?php foreach ($this->customers as $customer): ?>
+            <tr>
+                <td><?php echo $customer->id; ?></td>
+                <td><a href="<?php echo $this->url(array(
+                        'controller' => 'customers',
+                        'action' => 'view',
+                        'id' => $customer->id
+                    )) ?>"><?php echo $customer->name . " " . $customer->surname; ?></a>
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <a href="<?php echo $this->url(array(
+                        'controller' => 'customers',
+                        'action' => 'edit',
+                        'id' => $customer->id
+                    )) ?>">Add task</a>
+                </td>
+                <td>
+                    <a href="<?php echo $this->url(array(
+                        'controller' => 'customers',
+                        'action' => 'delete',
+                        'id' => $customer->id
+                    )) ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>No customers</p>
+<?php endif; ?>
